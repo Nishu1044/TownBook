@@ -4,11 +4,11 @@ const Loading = () => {
   return (
     <Box
       sx={{
-        display: 'flex', 
-        justifyContent: 'center', 
+        display: 'flex',
+        flexDirection: 'column',
         alignItems: 'center',
+        justifyContent: 'center',
         minHeight: '100vh',
-        marginLeft: '70%',
         gap: 2,
       }}
     >

@@ -1,4 +1,8 @@
 # Town Book - Library Management System
+# Admin Credentials for test
+Email- admin@gmail.com
+Password - admin123
+
 
 A comprehensive library management system that handles both book and room reservations.
 
@@ -51,14 +55,6 @@ JWT_SECRET=your_jwt_secret
 npm start
 ```
 
-The backend uses the following key dependencies:
-- Express.js for the server framework
-- Mongoose for MongoDB integration
-- JWT for authentication
-- Nodemailer for email notifications
-- Node-cron for scheduled tasks
-- Bcryptjs for password hashing
-
 ### Frontend Setup
 1. Navigate to the frontend directory:
 ```bash
@@ -74,14 +70,6 @@ npm install
 ```bash
 npm run dev
 ```
-
-The frontend uses the following key dependencies:
-- React 19 with Vite
-- Material-UI (MUI) for components
-- Redux Toolkit for state management
-- React Router for navigation
-- Formik with Yup for form handling
-- Axios for API requests
 
 ## Running the Application
 

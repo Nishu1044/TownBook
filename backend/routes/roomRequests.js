@@ -321,21 +321,4 @@ router.get('/user-check-in-stats', auth, async (req, res) => {
   }
 });
 
-// Add this new endpoint at the end of your file
-router.get('/user-check-in-stats', auth, async (req, res) => {
-  try {
-    const stats = await RoomRequest.find({
-      status: 'approved',
-      isActive: true
-    })
-    .populate('user', 'name email')
-    .populate('room', 'name')
-    .sort({ checkInTime: -1 });
-
-    res.json(stats);
-  } catch (error) {
-    res.status(500).json({ message: 'Error fetching user check-in statistics', error: error.message });
-  }
-});
-
 module.exports = router; 

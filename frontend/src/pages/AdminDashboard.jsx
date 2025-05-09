@@ -30,7 +30,6 @@ import { useSelector } from 'react-redux';
 import axios from '../utils/axios';
 import { useNavigate } from 'react-router-dom';
 import { Check as CheckIcon, Close as CloseIcon, Add as AddIcon, Remove as RemoveIcon } from '@mui/icons-material';
-import UserCheckInStats from '../components/UserCheckInStats';
 
 const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -1156,12 +1155,57 @@ const AdminDashboard = () => {
       {activeTab === 2 && renderBookRequestsTab()}
 
       {activeTab === 3 && (
-        <UserCheckInStats />
+        renderRoomRequestsTab()
       )}
 
       {activeTab === 4 && (
         renderRoomManagementTab()
       )}
+
+      <Grid container spacing={3} sx={{ mb: 4 }}>
+        <Grid item xs={12}>
+          <Card>
+            <CardContent>
+              <Typography variant="h6" gutterBottom>
+                User Check-in Statistics
+              </Typography>
+              <TableContainer>
+                <Table>
+                  <TableHead>
+                    <TableRow>
+                      <TableCell>User Name</TableCell>
+                      <TableCell>Room Name</TableCell>
+                      <TableCell>Check-in Status</TableCell>
+                      <TableCell>Check-in Time</TableCell>
+                      <TableCell>Check-out Time</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {userCheckInStats.map((request) => (
+                      <TableRow key={request._id}>
+                        <TableCell>{request.user?.name || 'N/A'}</TableCell>
+                        <TableCell>{request.room?.name || 'N/A'}</TableCell>
+                        <TableCell>
+                          <Chip 
+                            label={request.isCheckedIn ? "Checked In" : "Checked Out"} 
+                            color={request.isCheckedIn ? "success" : "default"}
+                          />
+                        </TableCell>
+                        <TableCell>
+                          {request.checkInTime ? new Date(request.checkInTime).toLocaleString() : 'Not checked in'}
+                        </TableCell>
+                        <TableCell>
+                          {request.checkOutTime ? new Date(request.checkOutTime).toLocaleString() : 'Not checked out'}
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </TableContainer>
+            </CardContent>
+          </Card>
+        </Grid>
+      </Grid>
     </Container>
   );
 };

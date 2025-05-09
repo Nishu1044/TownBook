@@ -63,7 +63,7 @@ const Login = () => {
   };
 
   return (
-    <Box component="form" onSubmit={handleSubmit} sx={{ width: '100%'}}>
+    <Box component="form" onSubmit={handleSubmit} sx={{ width: '100%' }}>
       <Typography component="h2" variant="h5" sx={{ mb: 3 }}>
         Sign in to your account
       </Typography>
